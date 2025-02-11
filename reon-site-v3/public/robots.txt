@@ -1,6 +1,15 @@
 # Allow all crawlers
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
 
-# Sitemap location
-Sitemap: https://portfolio.linmyatphyo.com/sitemap.xml 
+# Crawl-delay
+Crawl-delay: 10
+
+# Host
+Host: https://reon-site.vercel.app
+
+# Sitemaps
+Sitemap: https://reon-site.vercel.app/sitemap.xml 
