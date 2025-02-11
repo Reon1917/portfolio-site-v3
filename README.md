@@ -37,6 +37,7 @@ git clone https://github.com/Reon1917/portfolio-site-v3.git
 
 # Navigate to the directory
 cd portfolio-site-v3
+cd reon-site-v3
 
 # Install dependencies
 pnpm install
