@@ -2,8 +2,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navigation from "@/components/Navigation";
-import { Suspense } from "react";
-import Loading from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -85,18 +83,7 @@ export const viewport = {
   maximumScale: 1,
 };
 
-function registerServiceWorker() {
-  if (typeof window !== 'undefined' && 'serviceWorker' in navigator && window.workbox !== undefined) {
-    const wb = window.workbox;
-    wb.register();
-  }
-}
-
 export default function RootLayout({ children }) {
-  if (typeof window !== 'undefined') {
-    registerServiceWorker();
-  }
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -106,18 +93,11 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" sizes="180x180" />
       </head>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider>
           <Navigation />
-          <Suspense fallback={<Loading />}>
-            <main className="min-h-screen">
-              {children}
-            </main>
-          </Suspense>
+          <main className="min-h-screen">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>
